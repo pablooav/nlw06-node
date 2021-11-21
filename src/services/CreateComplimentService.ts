@@ -5,23 +5,23 @@ import { UsersRepositories } from "../repositories/UsersRepositories"
 interface IComplimentRequest {
   tag_id: string;
   user_sender: string;
-  user_reciver: string;
+  user_receiver: string;
   message: string;
 }
 
 class CreateComplimentService {
-  async execute({tag_id, user_sender, user_reciver, message}: IComplimentRequest) {
+  async execute({tag_id, user_sender, user_receiver, message}: IComplimentRequest) {
     const complimentsRepository = getCustomRepository(ComplimentsRepositories) 
     const userRepository = getCustomRepository(UsersRepositories)
 
-    if(user_sender === user_reciver) throw new Error("Incorrect User Reciver!");
+    if(user_sender === user_receiver) throw new Error("Incorrect User receiver!");
 
-    const userReciverExists = await userRepository.findOne(user_reciver)
-    if(!userReciverExists) throw new Error("User reciver does not exist!");
+    const userreceiverExists = await userRepository.findOne(user_receiver)
+    if(!userreceiverExists) throw new Error("User receiver does not exist!");
 
     const compliment = complimentsRepository.create({
       tag_id,
-      user_reciver,
+      user_receiver,
       user_sender,
       message
     })

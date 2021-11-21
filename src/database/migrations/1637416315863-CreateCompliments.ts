@@ -17,7 +17,7 @@ export class CreateCompliments1637416315863 implements MigrationInterface {
             
           },
           {
-            name: 'user_reciver',
+            name: 'user_receiver',
             type: 'uuid',
           },
           {
@@ -44,10 +44,10 @@ export class CreateCompliments1637416315863 implements MigrationInterface {
             onUpdate: "SET NULL",
           },
           {
-            name: "FKUserReciverCompliments",
+            name: "FKUserreceiverCompliments",
             referencedTableName: "users",
             referencedColumnNames: ["id"],
-            columnNames: ["user_reciver"],
+            columnNames: ["user_receiver"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
           },
